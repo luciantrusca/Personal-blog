@@ -3,19 +3,23 @@ import { PrismaClient } from '../../../generated/prisma/client'
 
 const prisma = new PrismaClient();
 
-export async function generateUniqueSlug(title:string){
+export async function generateUniqueSlug(title:string, check_unique:boolean){
     //make slug
     let baseSlug = slugify(title, {lower:true});
     const separator = "-"
     let suffix = 1;
     let combSlug = baseSlug //combined slug
+    let existingSlug: string | null = baseSlug
 
     //query db to check for uniqueness
-    let existingSlug = await prisma.post.findUnique({
-        //only select slug field, and check against the baseslug
-        where: {slug: baseSlug},
-        select:{slug: true}
-        })
+    if (check_unique) {
+        const found = await prisma.post.findUnique({
+            //only select slug field, and check against the baseslug
+            where: {slug: baseSlug},
+            select:{slug: true}
+        });
+        existingSlug = found ? found.slug : null;
+    }
 
     // If the base slug is taken, log this initial state
     console.log("Initial existingSlug:", existingSlug);
@@ -27,14 +31,14 @@ export async function generateUniqueSlug(title:string){
         console.log(`Trying slug [${combSlug}] with suffix ${suffix}`);
         suffix += 1
 
-        // check whether this new slug is unique
-        existingSlug = await prisma.post.findUnique({
+        const found = await prisma.post.findUnique({
             //only select slug field, and check against the baseslug
             where: {slug: combSlug},
             select:{slug: true}
-            });
+        });
+        existingSlug = found ? found.slug : null;
         console.log("existingSlug:", existingSlug);
-    }
+        }
 
     //if unique, return the slug
     console.log("Unique slug found:", combSlug);

@@ -16,24 +16,22 @@ describe('generateUniqueSlug', () => {
 
 
     test('should append a suffix if the base slug is taken', async () => {
-        // first creates a mock post
-        prismaMock.post.create({
-            data: {
+        prismaMock.post.findUnique.
+        mockResolvedValueOnce({
                 content: "Test content",
                 title: "test title",
                 slug: "test-title",
                 published: true,
                 author: { connect: { id: "1" } }
-            }
-        })
-        
-        //then checks that base slug is taken already
-        prismaMock.post.findUnique.
-        mockResolvedValueOnce({slug: 'test-title'} as any).
+            } as any).
         mockResolvedValueOnce(null);
 
-        const slug = await generateUniqueSlug('Test Title');
+        //checks that base slug is taken already
+        let slug = await generateUniqueSlug('Test title');
         expect(slug).toBe('test-title-1');
+
+        // slug = await generateUniqueSlug('Test title')
+        // expect(slug).toBe('test-title-1');
     });
 
 
