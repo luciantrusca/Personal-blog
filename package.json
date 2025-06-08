@@ -40,8 +40,8 @@
     "ts-node": "^10.9.2",
     "typescript": "^5"
   },
- 
+  "type": "module",
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node --loader ts-node/esm prisma/seed.ts"
   }
 }
