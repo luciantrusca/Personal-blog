@@ -1,7 +1,16 @@
-import Header from '../components/Header'; 
+import Sidebar from '@/components/Sidebar';
+import Header from '../components/Header';
+import { PrismaClient } from '../../generated/prisma/client';
 
-export default function App(){
+const prisma = new PrismaClient();
+
+export default async function App(){
+    const tags = await prisma.tag.findMany();
+
     return (
-        <Header />
+        <main>
+            <Header />
+            <Sidebar tags={tags} />
+        </main>
     );
 }

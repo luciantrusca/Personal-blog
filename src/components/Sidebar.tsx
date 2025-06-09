@@ -9,11 +9,11 @@ export default function Sidebar({tags}: {tags: Tag[]}) {
                     <h1>Quest log</h1>
                     <ul> {/* Vertical list of elements */}
                         <li>
-                            <img src={""}></img>
+                            <img src={"null"}></img>
                             <span>About</span>
                         </li>
                         <li>
-                            <img src={""}></img>
+                            <img src={"null"}></img>
                             <span>Contact</span>
                         </li>
                     </ul>
