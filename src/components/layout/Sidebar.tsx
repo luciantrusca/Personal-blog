@@ -1,4 +1,4 @@
-import type {Tag} from "../../generated/prisma/client";
+import type {Tag} from "../../../generated/prisma/client";
 
 export default function Sidebar({tags}: {tags: Tag[]}) {
     return (
@@ -23,7 +23,7 @@ export default function Sidebar({tags}: {tags: Tag[]}) {
                 <h1>Tags</h1>
                 <ul>
                     {tags.map (tag => (
-                        <li>{tag.name}</li>
+                        <li key={tag.id}>{tag.name}</li>
                     ))}
                     {/* TODO: Dynamically fill in with first 7 tags from DB */}
                     {/*
