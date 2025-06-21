@@ -6,7 +6,7 @@ function Header(){
             <div className="flex align-middle justify-center items-center gap-5 p-2 bg-amber-200 border-2">   {/* Header logo text + svg + nav */}
                 <div className="flex items-center">
                     <span className="">Chronicles of Curiosity</span>  {/* Header logo text*/}
-                    <img className="h-8 w-auto" src='/star.svg' alt="star" />           {/* Header svg */}
+                    <img className="h-8 w-auto" src='/star.png' alt="star" />           {/* Header svg */}
                 </div>
                 <nav className="">                      {/* Header navigation bar */}
                     <ul className="flex space-x-2.5">

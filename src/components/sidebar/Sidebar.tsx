@@ -3,26 +3,26 @@ import SidebarSection from "./SidebarSection";
 import {PrismaClient} from "~/generated/prisma/client";
 
 const questlogItems = [
-    { icon: "quest-icon", label: "About", href: "/quest/1" },
-    { icon: "quest-icon", label: "Contact", href: "/quest/2" },
+    { icon: "icons/medieval_compass Background Removed.png", label: "About", href: "/quest/1" },
+    { icon: "/icons/medieval_feather.png", label: "Contact", href: "/quest/2" },
 ];
 
 const prisma = new PrismaClient();
 
 export default async function Sidebar() {
     const tags = await prisma.tag.findMany();
-    // Map tags to SidebarItem[]
+    // Map tags to SidebarItem[] interface
     const tagItems = tags.map(tag => ({
         label: tag.name,
         // href: `/tags/${tag.id}`,
-        // icon: "tag-icon"
+        icon: tag.url || "icons/default_tag_icon.png", // Fallback icon if tag.url is null
     }));
 
     return (
-       <aside className="h-screen w-64"> {/* Sidebar */}
+       <aside className="w-64 grow"> {/* Sidebar */}
             <nav className="flex flex-col h-full">
-                <SidebarSection title="Quest Log" items={questlogItems}/>
-                <SidebarSection title="Tags" items={tagItems}/>
+                <SidebarSection className={["flex-1"]} title="Quest Log" items={questlogItems}/>
+                <SidebarSection className={["flex-2"]} title="Tags" items={tagItems}/>
             </nav>
         </aside>
     )

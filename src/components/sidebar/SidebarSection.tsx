@@ -7,13 +7,13 @@ interface SidebarItem {
 interface SidebarSectionProps {
   title: string;            // "Quest Log", "Latest Posts", etc.
   items: SidebarItem[];     // The list of items under this section
+  className?: string[];
 }
 
 
-export default async function SidebarSection({title,items}: SidebarSectionProps) {
+export default async function SidebarSection({title,items,className}: SidebarSectionProps) {
     return (
-    <section>
-        <div className="flex flex-col bg-amber-200 border-2 border-[#006629]">
+        <div className={`flex flex-col bg-amber-200 border-2 border-[#006629] ${className?.join(" ")}`}>
             <h1>{title}</h1>
             {items.map(item => {
                 return (
@@ -24,5 +24,5 @@ export default async function SidebarSection({title,items}: SidebarSectionProps)
                 );
             })}
         </div>
-    </section>)
+    )
 }
