@@ -1,10 +1,10 @@
 import { Post } from "~/generated/prisma";
 
-export default function LatestPost({post}: {post: Post}) {
+export default function LatestPost({post, className}: {post: Post; className?: string[]}) {
     const preview = post.content.slice(0, 100) + "..."; // Preview content
     
     return (
-        <section className="bg-[#F2E6C6] border-2 border-[#6B7133] p-4">
+        <section className={`bg-[#F2E6C6] border-2 border-[#6B7133] p-4 ${className?.join(" ")}`}>
             <h1 className="text-lg font-bold">Latest Post</h1>
             <h1>{post.title}</h1>
             <div style={{ display: "flex", gap: "1rem" }}>

@@ -24,11 +24,10 @@ export default async function App(){
     });
 
     return (
-        <main className="p-4 bg-[#e7d9b4] min-h-screen flex flex-col">
+        <main className="p-4 bg-[#e7d9b4] min-h-screen max-h-screen flex flex-col">
             <Header />
-            <div className="flex min-h-screen">
+            <div className="flex h-lvh">
                 <Sidebar />
-                <LatestPost post={latestPosts[0]} />
                 <MainContent recent_posts={latestPosts} />
             </div>
         </main>

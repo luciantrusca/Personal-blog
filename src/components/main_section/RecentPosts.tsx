@@ -1,12 +1,12 @@
 import { Post, PrismaClient } from '~/generated/prisma/client';
 import PostCard from './PostCard';
 
-export default async function RecentPosts({ recent_posts }: { recent_posts: Post[] }) {
-    recent_posts = recent_posts.slice(0, 4); // Limit to 3 recent posts
+export default async function RecentPosts({ recent_posts, className }: { recent_posts: Post[]; className?: string[] }) {
+    recent_posts = recent_posts.slice(0, 4); // Limit to 4 recent posts
 
     // Render the recent posts
     return (
-    <section className="flex flex-row bg-[#F2E6C6] border-2 border-[#6B7133] p-4">
+    <section className={`flex flex-row bg-[#F2E6C6] border-2 border-[#6B7133] p-4 ${className?.join(" ")}`}>
         <div className="p-2">
             <h1 className="text-lg font-bold">Recent posts</h1>
             <p className="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
