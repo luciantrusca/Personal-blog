@@ -13,11 +13,11 @@ interface SidebarSectionProps {
 
 export default async function SidebarSection({title,items,className}: SidebarSectionProps) {
     return (
-        <div className={`flex flex-col bg-amber-200 border-2 border-[#006629] ${className?.join(" ")}`}>
-            <h1>{title}</h1>
+        <div className={`flex flex-col bg-[#F7E6B8] border-2 border-[#006629] ${className?.join(" ")}`}>
+            <h1 className="self-center pt-1.5 text-2xl">{title}</h1>
             {items.map(item => {
                 return (
-                    <div key={item.label} className="flex items-center gap-2 p-2">
+                    <div key={item.label} className="flex items-center pl-4 gap-2 p-1.5">
                         <img src={item?.icon} className="w-4 h-4" alt="" />
                         <span>{item.label}</span>
                     </div>

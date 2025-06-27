@@ -24,7 +24,7 @@ export default async function App(){
     });
 
     return (
-        <main className="p-4 bg-[#e7d9b4] min-h-screen max-h-screen flex flex-col">
+        <main className="p-4 bg-[#EFD9A1] min-h-screen max-h-screen flex flex-col">
             <Header />
             <div className="flex h-lvh">
                 <Sidebar />

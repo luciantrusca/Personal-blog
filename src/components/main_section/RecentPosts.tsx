@@ -6,7 +6,7 @@ export default async function RecentPosts({ recent_posts, className }: { recent_
 
     // Render the recent posts
     return (
-    <section className={`flex flex-row bg-[#F2E6C6] border-2 border-[#6B7133] p-4 ${className?.join(" ")}`}>
+    <section className={`flex flex-row bg-[#F7E6B8] border-2 border-[#6B7133] p-4 ${className?.join(" ")}`}>
         <div className="p-2">
             <h1 className="text-lg font-bold">Recent posts</h1>
             <p className="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit,

@@ -20,8 +20,8 @@ export default async function Sidebar() {
     }));
 
     return (
-       <aside className="w-64"> {/* Sidebar */}
-            <nav className="flex flex-col h-full">
+       <aside className=""> {/* Sidebar */}
+            <nav className="w-64 max-w-45 min-w-35 flex flex-col h-full ">
                 <SidebarSection className={[""]} title="Quest Log" items={questlogItems}/>
                 <SidebarSection className={[""]} title="Tags" items={tagItems}/>
                 <ParchmentSpacer className="h-full bg-amber-200 border-[#006629] border-2"/>
