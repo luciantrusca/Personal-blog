@@ -47,3 +47,6 @@ next-env.d.ts
 #design
 /design
 .gitignore
+
+*storybook.log
+storybook-static
