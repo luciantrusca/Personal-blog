@@ -25,20 +25,21 @@ export async function POST(request:Request){
 
 
 
-const post = await prisma.post.create({
-  data: {
-    title: data.title,
-    content: data.content,
-    published: true,
-    slug: slugify(data.title, { lower: true }),
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    author: {
-      connect: { id: data.authorId } // Make sure data.authorId is provided in the request body
+  const post = await prisma.post.create({
+    data: {
+      title: data.title,
+      content: data.content,
+      published: true,
+      slug: slugify(data.title, { lower: true }),
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      author: {
+        connect: { id: data.authorId } // Make sure data.authorId is provided in the request body
+      },
+      tags: {
+          connect: tags_list.map(tag => ({id: tag.id}))
+      }
     },
-    tags: {
-        connect: tags_list.map(tag => ({id: tag.id}))
-    }
-  },
-})
+  })
+  return NextResponse.json({ message: 'Success' }, { status: 200 }); 
 }

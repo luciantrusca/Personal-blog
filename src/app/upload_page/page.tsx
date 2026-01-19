@@ -1,7 +1,36 @@
-"use client";
 import Header from "@/components/header/Header";
+import { redirect } from "next/navigation";
 
-export default function UploadPage() {
+export default async function UploadPage() 
+{
+    async function submitBlogPost(formData: FormData) {
+        "use server";
+        const title = formData.get('title');
+        const content = formData.get('content');
+        const authorId = '1';
+
+        // call API route
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+        const response = await fetch(`${baseUrl}/api/posts`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+
+            //send title and content as JSON
+            body: JSON.stringify({title,content,authorId}),
+        });
+
+        //check if response is ok
+        if (!response.ok) {
+            throw new Error('Failed to submit blog post');
+        }
+
+        //redirect to home page
+        redirect('/');
+        
+    }
+
     return (
         <main className="min-h-screen bg-[#F7E6B6] m-6">
             <Header/>
@@ -9,7 +38,7 @@ export default function UploadPage() {
             <div className="border-2 border-t-0 flex flex-col p-10 gap-[5vw] mx-auto"> 
                 <h1 className="text-4xl font-bold">Upload Post</h1>
 
-                <form action={"/api/posts"} method="POST" className="flex flex-col gap-4">
+                <form action={submitBlogPost} className="flex flex-col gap-4">
                     {/* Post title input section */}
                     <div className="flex flex-col gap-2">
                         <h2 className="text-2xl font-bold">Post Title</h2>
