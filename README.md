@@ -1,21 +1,29 @@
 # byte-sized-blog
 
-A simple client–server blog built with React, TypeScript, Express, and PostgreSQL.
+A personal blog built with Next.js, TypeScript, and Prisma.
 
-## 🚀 Project Overview
+## Project Overview
 - **Purpose**: Host my technical articles & portfolio.
-- **Features**: Markdown posts, tag filtering, admin dashboard.
+- **Features**: Blog posts with tags, author profiles, recent posts display.
 
-## 📦 Tech Stack
-- **Frontend**: React 18 + TypeScript + Vite + Tailwind CSS  
-- **Backend**: Node 20 + Express + Prisma + PostgreSQL  
-- **Auth**: Auth.js (GitHub & magic‑link)  
-- **Hosting**: Vercel (web), Railway (API + DB)
+## Tech Stack
+- **Framework**: Next.js 15 + React 19 + TypeScript
+- **Database**: SQLite via Prisma
+- **Styling**: Tailwind CSS v4
+- **Testing**: Vitest, Jest, Playwright, Testing Library
+- **Component Dev**: Storybook
 
-## 🛠️ Getting Started
-1. `git clone … && cd personal-blog`  
-2. `pnpm install`  
-3. `pnpm turbo run dev`  _(starts both web & api)_
+## Getting Started
+1. `git clone <repo-url> && cd personal-blog`
+2. `npm install`
+3. `npx prisma generate`
+4. `npx prisma migrate dev`
+5. `npm run dev`
 
-## 📄 License
+## Scripts
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run storybook` - Launch Storybook
+
+## License
 This project is licensed under the [MIT License](LICENSE).
